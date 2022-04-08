@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+  -
+    let results = [
+      {
+        "horse_colour": "Purple horse",
+        "horse_weight": "Less",
+        "horse_cost": 2
+      },
+      {
+        "horse_colour": "white horse",
+        "horse_weight": "Medium",
+        "horse_cost": 6
+      },
+      {
+        "horse_colour": "Black horse",
+        "horse_weight": "Large",
+        "horse_cost": 10
+      },                   
+    ]
+  div(class= "container-fluid")
+    div(class = "row")
+      each item,index in results
+        div(class= "col-sm-2", onclick=`buy(${index})`) #{item.horse_colour}
+        div(class= "col-sm-2", onclick=`buy(${index})`) #{item.horse_weight}
+        div(class= "col-sm-2", onclick=`buy(${index})`) #{item.horse_cost}
+
+  script.
+    function buy(itemNum){
+      alert(`You purchased item ${itemNum+1}`)
+    }
